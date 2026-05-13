@@ -1,41 +1,56 @@
-const sampleData = [
-    {
-        name: "photo1.jpg",
-        size: "2MB",
-        status: "Duplicate"
-    },
-    {
-        name: "video.mp4",
-        size: "50MB",
-        status: "Unique"
-    },
-    {
-        name: "document.pdf",
-        size: "1MB",
-        status: "Duplicate"
+async function findDuplicates() {
+    const input = document.getElementById('folderInput');
+    const files = Array.from(input.files);
+    const results = document.getElementById('results');
+
+    results.innerHTML = '<h2>Scanning files...</h2>';
+
+    if (files.length === 0) {
+        results.innerHTML = '<p>Please select a folder.</p>';
+        return;
     }
-];
 
-function scanFiles() {
+    const hashMap = {};
 
-    const table = document.getElementById('resultBody');
+    for (const file of files) {
+        const hash = await generateHash(file);
 
-    table.innerHTML = '';
+        if (!hashMap[hash]) {
+            hashMap[hash] = [];
+        }
 
-    sampleData.forEach(file => {
+        hashMap[hash].push(file.webkitRelativePath);
+    }
 
-        const row = `
-            <tr>
-                <td>${file.name}</td>
-                <td>${file.size}</td>
-                <td>${file.status}</td>
-            </tr>
-        `;
+    results.innerHTML = '<h2>Duplicate Files:</h2>';
 
-        table.innerHTML += row;
-    });
+    let duplicateFound = false;
+
+    for (const hash in hashMap) {
+        if (hashMap[hash].length > 1) {
+            duplicateFound = true;
+
+            const div = document.createElement('div');
+            div.classList.add('file-card');
+
+            div.innerHTML = `
+                <p class="duplicate">Duplicate Group</p>
+                ${hashMap[hash].map(file => `<p>${file}</p>`).join('')}
+            `;
+
+            results.appendChild(div);
+        }
+    }
+
+    if (!duplicateFound) {
+        results.innerHTML += '<p>No duplicate files found.</p>';
+    }
 }
 
-function clearResults() {
-    document.getElementById('resultBody').innerHTML = '';
+async function generateHash(file) {
+    const buffer = await file.arrayBuffer();
+    const hashBuffer = await crypto.subtle.digest('SHA-256', buffer);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+    return hashHex;
 }
