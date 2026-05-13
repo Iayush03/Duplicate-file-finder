@@ -1,151 +1,34 @@
-# 🚀 Professional Duplicate File Finder
+# 📂 Duplicate File Finder
 
-A modern and professional Duplicate File Finder application developed using HTML, CSS, JavaScript and C++. This project helps users detect duplicate files with a stylish dashboard UI and responsive design.
+A modern web-based Duplicate File Finder that allows users to upload folders and detect duplicate files directly in the browser using SHA-256 hashing.
 
----
+## 🚀 Features
 
-# 📌 Features
-
-✅ Modern Dark UI  
-✅ Responsive Dashboard  
-✅ Duplicate File Detection  
-✅ File Scanner System  
-✅ Stylish User Interface  
-✅ Fast Performance  
-✅ C++ File Scanning Logic  
-✅ HTML/CSS Frontend  
-✅ JavaScript Dynamic Table  
+- 📁 Folder Upload Support
+- 🔍 Duplicate File Detection
+- 🔐 SHA-256 Hash Comparison
+- 🌙 Dark Mode UI
+- ⚡ Fast Browser-Based Scanning
+- 🌐 GitHub Pages Compatible
+- ❌ No Backend Required
 
 ---
 
-# 🛠 Technologies Used
+## 🛠️ Technologies Used
 
-## Frontend
-- HTML5
-- CSS3
+- HTML
+- CSS
 - JavaScript
-
-## Backend
-- C++
+- Web Crypto API
 
 ---
 
-# 📂 Project Structure
+## 📸 How It Works
 
-```bash
-DuplicateFileFinder/
-│
-├── index.html
-├── style.css
-├── script.js
-├── scanner.cpp
-└── README.md
-```
+1. Upload a folder from your PC
+2. Website scans all files
+3. SHA-256 hash generated for each file
+4. Duplicate files are grouped together
+5. Results displayed instantly
 
 ---
-
-# 🌐 Frontend Preview
-
-## Dashboard Includes:
-- Scan Files Button
-- Duplicate Detection Table
-- Responsive Layout
-- Modern Sidebar
-- Dark Theme Design
-
----
-
-# ▶️ How To Run Frontend
-
-## Step 1
-Download or clone project.
-
-## Step 2
-Open project folder.
-
-## Step 3
-Run:
-
-```bash
-index.html
-```
-
-OR use Live Server in VS Code.
-
----
-
-# 💻 How To Run C++ Scanner
-
-## Compile
-
-```bash
-g++ scanner.cpp -o scanner
-```
-
-## Run
-
-### Windows
-```bash
-scanner.exe
-```
-
-### Linux/Mac
-```bash
-./scanner
-```
-
----
-
-
-
-Example:
-
-```markdown
-![Dashboard](assets/dashboard.png)
-```
-
----
-
-# 🚀 Future Improvements
-
-- SHA256 Hash Detection
-- AI Smart Cleaner
-- Delete Duplicate Files
-- Progress Bar
-- Drag & Drop Upload
-- Cloud Backup
-- Electron Desktop App
-- Login System
-
----
-
-# 🌍 Live Demo
-
-Enable GitHub Pages from:
-
-Settings → Pages → Deploy from Branch
-
----
-
-# 📦 GitHub Upload Commands
-
-```bash
-git init
-git add .
-git commit -m "Initial Commit"
-git branch -M main
-git remote add origin YOUR_REPO_LINK
-git push -u origin main
-```
-
----
-
-# 👨‍💻 Author
-
-Ayush Upadhyay
-
----
-
-# ⭐ Support
-
-If you like this project, give it a ⭐ on GitHub.
